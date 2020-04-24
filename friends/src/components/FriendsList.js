@@ -11,7 +11,7 @@ const FriendsList = () => {
     e.preventDefault();
     axiosWithAuth()
       .post(`/friends`, { name, age, email })
-      .then((res) => console.log(res));
+      .then((res) => setFriends(res.data));
   };
 
   useEffect(() => {
