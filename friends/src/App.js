@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
 
 import Login from "./components/Login";
 import FriendsList from "./components/FriendsList";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -16,10 +16,7 @@ function App() {
         <Link to="/friendsList">Friends</Link>
       </Route>
       <Route path="/login" render={(props) => <Login {...props} />} />
-      <Route
-        path="/friendsList"
-        render={(props) => <FriendsList {...props} />}
-      ></Route>
+      <PrivateRoute path="/friendsList" component={FriendsList} />
     </>
   );
 }
