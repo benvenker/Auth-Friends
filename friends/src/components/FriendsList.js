@@ -14,6 +14,14 @@ const FriendsList = () => {
       .then((res) => setFriends(res.data));
   };
 
+  const deleteFriend = (id) => {
+    console.log(id);
+    friends.filter((friend) => friend.id !== id);
+    axiosWithAuth()
+      .delete(`/friends/${id}`, { id: id })
+      .then((res) => setFriends(res.data));
+  };
+
   useEffect(() => {
     axiosWithAuth()
       .get(`/friends`)
@@ -45,7 +53,14 @@ const FriendsList = () => {
       <h3>Friends List</h3>
       <ul>
         {friends.map((friend) => {
-          return <li key={friend.id}>{friend.name}</li>;
+          return (
+            <li key={friend.id}>
+              {friend.name}{" "}
+              <span>
+                <button onClick={() => deleteFriend(friend.id)}>X</button>
+              </span>
+            </li>
+          );
         })}
       </ul>
     </div>
