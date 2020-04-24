@@ -9,7 +9,10 @@ const Login = () => {
     e.preventDefault();
     axiosWithAuth()
       .post(`/login`, { username, password })
-      .then((res) => console.log(res));
+      .then((res) => {
+        localStorage.setItem("token", res.data.payload);
+      })
+      .catch((err) => console.log(`Error: ${err}`));
   };
 
   return (
