@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const Login = () => {
+const Login = (props) => {
+  const { history } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,6 +14,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.payload);
       })
       .catch((err) => console.log(`Error: ${err}`));
+    history.push("/friendsList");
   };
 
   return (
