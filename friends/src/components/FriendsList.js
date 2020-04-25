@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+import "./FriendsList.css";
+
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
   const [email, setEmail] = useState("");
@@ -48,7 +50,9 @@ const FriendsList = () => {
           Email:
           <input onChange={(e) => setEmail(e.target.value)} type="email" />
         </label>
-        <button onClick={addFriend}>Submit</button>
+        <button className="submit-button" onClick={addFriend}>
+          Submit
+        </button>
       </form>
       <h3>Friends List</h3>
       <ul>
